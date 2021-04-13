@@ -1,22 +1,24 @@
+"use strict";
+
 let catalogue = {
     catalogueBlock: null,
     bin: null,
     items: [
         {
-            id_item: 1,
-            item: "motherboard",
+            id_item: 57,
+            item_name: "motherboard",
             price: 3500,
         },
         {
-            id_item: 2,
-            item: "HDD",
-            price: 3476,
+            id_item: 34,
+            item_name: "HDD",
+            price: 3476
         },
         {
-            id_item: 3,
-            item: "flash_drive",
-            price: 2315,
-        },
+            id_item: 12,
+            item_name: "flash_drive",
+            price: 2315
+        }
     ],
     init(catalogueBlockClass, bin) {
         this.catalogueBlock = document.querySelector(`.${catalogueBlockClass}`);
@@ -25,10 +27,10 @@ let catalogue = {
         this.addEventHandlers();
     },
     draw() {
-        if (this.getCatalogueListLength() > 0) {
-            this.drawCatalogueList();
+        if (this.getCatalogueItemsLength() > 0) {
+            this.drawCatalogueItems();
         } else {
-            this.drawEmptyCatalog();
+            this.drawEmptyCatalogue();
         }
 
     },
@@ -37,28 +39,28 @@ let catalogue = {
     },
 
     addToBin(event) {
-        if (!event.target.classList.contains('item_add-to-bin')) return;
+        if (!event.target.classItems.contains('item__add-to-bin')) return;
         let idItem = +event.target.dataset.id_item;
         let itemToAdd = this.items.find((item) => item.id_item === idItem);
         this.bin.addToBin(itemToAdd);
     },
 
-    getCatalogueListLength() {
+    getCatalogueItemsLength() {
         return this.items.length;
     },
 
-    drawCatalogueList() {
+    drawCatalogueItems() {
         this.catalogueBlock.innerHTML = '';
         this.items.forEach(product => {
             this.catalogueBlock.insertAdjacentHTML('beforeend', this.drawCatalogueProduct(product));
-        })
+        });
     },
 
     drawCatalogueProduct(product) {
-        return `<div class="product">
-        <h2>${product.product_name}</h2>
-        <p>${product.price} руб.</p>
-        <button class="item_add-to-cart" data-id_item="${item.id_item}">To the bin</button>
+        return `<div class="item">
+        <h2>${product.item_name}</h2>
+        <p>${product.price} roubles</p>
+        <button class="item__add-to-bin" data-id_item="${product.id_item}">To a bin</button>
     </div>`;
     },
 
@@ -70,31 +72,19 @@ let catalogue = {
 };
 
 let bin = {
-    binListBlock: null,
+    binBlock: null,
     clearBinButton: null,
-    items: [
+    positions: [
         {
-            id_item: 1,
-            item: "motherboard",
+            id_item: 57,
+            item_name: "motherboard",
             price: 3500,
             quantity: 2
-        },
-        {
-            id_item: 2,
-            item: "HDD",
-            price: 3476,
-            quantity: 3
-        },
-        {
-            id_item: 3,
-            item: "flash_drive",
-            price: 2315,
-            quantity: 1
-        },
+        }
     ],
 
-    init(binListBlockClass, clearBinButton) {
-        this.binListBlock = document.querySelector(`.${BinListBlockClass}`);
+    init(binBlockClass, clearBinButton) {
+        this.binBlock = document.querySelector(`.${BinBlockClass}`);
         this.clearBinButton = document.querySelector(`.${clearBinButton}`);
         this.addEventHandlers();
         this.draw();
@@ -105,12 +95,12 @@ let bin = {
     },
 
     clearBin() {
-        this.items = [];
+        this.positions = [];
         this.draw();
     },
 
     draw() {
-        if (this.getBinItemsLength() > 0) {
+        if (this.getBinPositionsLength() > 0) {
             this.drawBinList();
         } else {
             this.drawEmptyBin();
@@ -119,38 +109,38 @@ let bin = {
 
     addToBin(item) {
         if (item) {
-            let searchInBin = this.items.find(({ id_item }) => item.id_item === id_item);
+            let searchInBin = this.positions.find(({ id_item }) => item.id_item === id_item);
             if (searchInBin) {
                 searchInBin.quantity++;
             } else {
-                this.items.push({ ...item, quantity: 1 });
-
+                this.positions.push({ ...item, quantity: 1 });
             }
+
             this.draw();
         } else {
-            alert('Youve made a mistake while adding');
+            alert("You've made a mistake while adding");
         }
     },
 
-    getBinItemsLength() {
-        return this.items.length;
+    getBinPositionsLength() {
+        return this.positions.length;
     },
 
     drawEmptyBin() {
-        this.binListBlock.innerHTML = '';
-        this.binListBlock.textContent = 'Bin is empty';
+        this.binBlock.innerHTML = '';
+        this.binBlock.textContent = 'Bin is empty';
     },
 
-    drawBinList() {
-        this.binListBlock.innerHTML = '';
-        this.items.forEach(product => {
-            this.binListBlock.insertAdjacentHTML('beforeend', this.drawBinProduct(product));
+    drawBinItems() {
+        this.binItemsBlock.innerHTML = '';
+        this.positions.forEach(product => {
+            this.binBlock.insertAdjacentHTML('beforeend', this.drawBinProduct(product));
         });
     },
 
     drawBinProduct(product) {
         return `<div>
-        <h2>${product.item}</h2>
+        <h2>${product.item_name}</h2>
         <p>${product.price} roubles</p>
         <p>${product.quantity} pcs</p>
     </div>`;
@@ -158,4 +148,4 @@ let bin = {
 };
 
 catalogue.init('catalogue', bin);
-bin.init('bin', 'clearBin')
+bin.init('bin', 'clear-bin');
