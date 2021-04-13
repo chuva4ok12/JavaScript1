@@ -39,7 +39,7 @@ let catalogue = {
     },
 
     addToBin(event) {
-        if (!event.target.classItems.contains('item__add-to-bin')) return;
+        if (!event.target.classList.contains('item__add-to-bin')) return;
         let idItem = +event.target.dataset.id_item;
         let itemToAdd = this.items.find((item) => item.id_item === idItem);
         this.bin.addToBin(itemToAdd);
@@ -84,7 +84,7 @@ let bin = {
     ],
 
     init(binBlockClass, clearBinButton) {
-        this.binBlock = document.querySelector(`.${BinBlockClass}`);
+        this.binBlock = document.querySelector(`.${binBlockClass}`);
         this.clearBinButton = document.querySelector(`.${clearBinButton}`);
         this.addEventHandlers();
         this.draw();
@@ -101,7 +101,7 @@ let bin = {
 
     draw() {
         if (this.getBinPositionsLength() > 0) {
-            this.drawBinList();
+            this.drawBinItems();
         } else {
             this.drawEmptyBin();
         }
@@ -117,6 +117,7 @@ let bin = {
             }
 
             this.draw();
+
         } else {
             alert("You've made a mistake while adding");
         }
@@ -132,7 +133,7 @@ let bin = {
     },
 
     drawBinItems() {
-        this.binItemsBlock.innerHTML = '';
+        this.binBlock.innerHTML = '';
         this.positions.forEach(product => {
             this.binBlock.insertAdjacentHTML('beforeend', this.drawBinProduct(product));
         });
