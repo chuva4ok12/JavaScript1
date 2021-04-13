@@ -15,18 +15,21 @@ b) Организовать функцию countBasketPrice, которая бу
 <body>
     <script>
 
-        let goods = ['ручка', 'карандаш', 'ластик'];
-        let price = [50, 50, 25];
-        let bin = [goods, price];
+        let bin = [
+            ['motherboard', 3500, 2],
+            ['HDD', 3476, 3],
+            ['flash_drive', 2315, 1]
+        ];
 
-        function countBasketPrice() {
+        function countBasketPrice(bin) {
             let cost = 0;
-            for (let count in bin[1]) {
-                cost += bin[1][count];
+            for (let i = 0; i < bin.length; i++) {
+                cost += bin[i][1] * bin[i][2];
             }
             return cost;
         }
 
+        console.log(countBasketPrice(bin));
 
     </script>
 </body>
