@@ -150,3 +150,4 @@ let bin = {
 
 catalogue.init('catalogue', bin);
 bin.init('bin', 'clear-bin');
+
