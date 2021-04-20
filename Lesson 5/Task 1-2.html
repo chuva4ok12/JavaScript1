@@ -2,16 +2,157 @@
 <html lang="EN">
 
 <head>
-    <title></title>
+    <title>Let's play in chess</title>
     <meta charset="UTF-8">
     <style>
+        .box {
+            text-align: center;
+            background-color: white;
+        }
 
+        .centered {
+            display: inline-block;
+            margin: 0;
+        }
+
+        .chess-board {
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+        .chess-board th {
+            padding: .5em;
+        }
+
+        .chess-board td {
+            border: 1px solid;
+            width: 5em;
+            height: 5em;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .chess-board .white {
+            background: white;
+        }
+
+        .chess-board .black {
+            background: rgb(4, 128, 0);
+        }
     </style>
 </head>
 
 <body>
 
+    <div class="box">
+        <div class="centered">
 
+            <table class="chess-board">
+                <tbody>
+                    <tr>
+                        <th></th>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>C</th>
+                        <th>D</th>
+                        <th>E</th>
+                        <th>F</th>
+                        <th>G</th>
+                        <th>H</th>
+                    </tr>
+                    <tr>
+                        <th>8</th>
+                        <td class="white" id="A8">Л</td>
+                        <td class="black" id="B8">К</td>
+                        <td class="white" id="C8">С</td>
+                        <td class="black" id="D8">К</td>
+                        <td class="white" id="E8">Ф</td>
+                        <td class="black" id="F8">С</td>
+                        <td class="white" id="G8">К</td>
+                        <td class="black" id="H8">Л</td>
+                    </tr>
+                    <tr>
+                        <th>7</th>
+                        <td class="black" id="A7">П</td>
+                        <td class="white" id="B7">П</td>
+                        <td class="black" id="C7">П</td>
+                        <td class="white" id="D7">П</td>
+                        <td class="black" id="E7">П</td>
+                        <td class="white" id="F7">П</td>
+                        <td class="black" id="G7">П</td>
+                        <td class="white" id="H7">П</td>
+                    </tr>
+                    <tr>
+                        <th>6</th>
+                        <td class="white" id="A6"></td>
+                        <td class="black" id="B6"></td>
+                        <td class="white" id="C6"></td>
+                        <td class="black" id="D6"></td>
+                        <td class="white" id="E6"></td>
+                        <td class="black" id="F6"></td>
+                        <td class="white" id="G6"></td>
+                        <td class="black" id="H6"></td>
+                    </tr>
+                    <tr>
+                        <th>5</th>
+                        <td class="black" id="A5"></td>
+                        <td class="white" id="B5"></td>
+                        <td class="black" id="C5"></td>
+                        <td class="white" id="D5"></td>
+                        <td class="black" id="E5"></td>
+                        <td class="white" id="F5"></td>
+                        <td class="black" id="G5"></td>
+                        <td class="white" id="H5"></td>
+                    </tr>
+                    <tr>
+                        <th>4</th>
+                        <td class="white" id="A4"></td>
+                        <td class="black" id="B4"></td>
+                        <td class="white" id="C4"></td>
+                        <td class="black" id="D4"></td>
+                        <td class="white" id="E4"></td>
+                        <td class="black" id="F4"></td>
+                        <td class="white" id="G4"></td>
+                        <td class="black" id="H4"></td>
+                    </tr>
+                    <tr>
+                        <th>3</th>
+                        <td class="black" id="A3"></td>
+                        <td class="white" id="B3"></td>
+                        <td class="black" id="C3"></td>
+                        <td class="white" id="D3"></td>
+                        <td class="black" id="E3"></td>
+                        <td class="white" id="F3"></td>
+                        <td class="black" id="G3"></td>
+                        <td class="white" id="H3"></td>
+                    </tr>
+                    <tr>
+                        <th>2</th>
+                        <td class="white" id="A2">П</td>
+                        <td class="black" id="B2">П</td>
+                        <td class="white" id="C2">П</td>
+                        <td class="black" id="D2">П</td>
+                        <td class="white" id="E2">П</td>
+                        <td class="black" id="F2">П</td>
+                        <td class="white" id="G2">П</td>
+                        <td class="black" id="H2">П</td>
+                    </tr>
+                    <tr>
+                        <th>1</th>
+                        <td class="black" id="A1">Л</td>
+                        <td class="white" id="B1">К</td>
+                        <td class="black" id="C1">С</td>
+                        <td class="white" id="D1">К</td>
+                        <td class="black" id="E1">Ф</td>
+                        <td class="white" id="F1">С</td>
+                        <td class="black" id="G1">К</td>
+                        <td class="white" id="H1">Л</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
 
 </body>
 
